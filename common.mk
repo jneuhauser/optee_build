@@ -44,6 +44,9 @@ CFG_TEE_CORE_LOG_LEVEL		?= 3
 # default disable latency benchmarks (over all OP-TEE layers)
 CFG_TEE_BENCHMARK		?= n
 
+# default enable stack trace printing
+CFG_UNWIND				?= n
+
 # optee_test
 WITH_TLS_TESTS			?= y
 ifneq ($(COMPILER),clang)
@@ -523,6 +526,7 @@ OPTEE_OS_COMMON_FLAGS ?= \
 	CROSS_COMPILE_ta_arm32="$(CCACHE)$(AARCH32_CROSS_COMPILE)" \
 	CFG_TEE_CORE_LOG_LEVEL=$(CFG_TEE_CORE_LOG_LEVEL) \
 	DEBUG=$(DEBUG) \
+	CFG_UNWIND=$(CFG_UNWIND) \
 	CFG_TEE_BENCHMARK=$(CFG_TEE_BENCHMARK) \
 	CFG_IN_TREE_EARLY_TAS=trusted_keys/f04a0fe7-1f5d-4b9b-abf7-619b85b4ce8c
 
